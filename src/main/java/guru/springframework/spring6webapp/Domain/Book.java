@@ -4,9 +4,6 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * Created by jt, Spring Framework Guru.
- */
 @Entity
 public class Book {
 
@@ -21,6 +18,17 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id"))
 
     private Set<Author> authors = new HashSet<>();
+
+    @ManyToOne
+    private Publisher publisher;
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
 
     public Set<Author> getAuthors() {
         return authors;
